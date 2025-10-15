@@ -23,18 +23,28 @@ import Selenium.FrameworkDesignauto.pageobjects.Landingpage;
 import Selenium.FrameworkDesignauto.pageobjects.productCatalog;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public abstract class ErrorValidations extends BaseTest{
+public class ErrorValidations extends BaseTest{
 	
 	@Test
-	 public void SubmitOrder() throws InterruptedException, IOException
+	 public void loginError() throws InterruptedException, IOException
 	 {
 		// TODO Auto-generated method stub
 		String productName = "ZARA COAT 3";
-		landingpage.loginApplication("H@gmail.com", "Hari@123");
-		Assert.assertEquals("Incorret mail or password.", landingpage.getErrorMessage());
+		landingpage.loginApplication("Hari@gmail.com", "Hari@123");
+		Assert.assertEquals("Incorrect email or password.", landingpage.getErrorMessage());
 	 }
 
-		
+	@Test
+	public void productErrorvalidation()
+	{
+		String productName = "ZARA COAT 3";
+		productCatalog ProductCatalog=landingpage.loginApplication("Har@gmail.com", "Hari@123");
+		List<WebElement>products=ProductCatalog.getProductlist();
+		ProductCatalog.AddproductToCart(productName);
+		CartPage cartpage=ProductCatalog.gotocart();
+		boolean match=cartpage.verifyProductDisplay("ZARA");
+		Assert.assertFalse(match);
+	}
 		
 		
 

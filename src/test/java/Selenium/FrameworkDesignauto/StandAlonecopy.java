@@ -1,4 +1,4 @@
-dspackage Selenium.FrameworkDesignauto;
+package Selenium.FrameworkDesignauto;
 
 import org.testng.annotations.Test;
 
@@ -54,10 +54,10 @@ public class StandAlonecopy extends BaseTest{
 		
 	 }
 	
-	public void postjira()
+/*	public void postjira()
 	{
 		System.out.println("postjira")
-	}
+	}*/
 
 
 }
